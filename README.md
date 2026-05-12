@@ -103,7 +103,7 @@ Defines a frozen `LabeledSentence` dataclass (tokens + BIO labels) and `read_con
 
 The notebook is organized into six logical stages:
 
-1. **Data loading** — reads EN and DE train/dev/test splits via `read_conll_file`; constructs an EN+DE concatenated training set for for Experiment 4 in [Table 2](#replication-of-xlm-r-base-table-2).
+1. **Data loading** — reads EN and DE train/dev/test splits via `read_conll_file`; constructs an EN+DE concatenated training set for Configuration 4 in [Table 2](#replication-of-xlm-r-base-table-2).
 
 2. **Dataset construction** — converts sentences into HuggingFace `Dataset` objects with typed `ClassLabel` features over the nine BIO tags (`O`, `B/I-PER`, `B/I-ORG`, `B/I-LOC`, `B/I-MISC`).
 
