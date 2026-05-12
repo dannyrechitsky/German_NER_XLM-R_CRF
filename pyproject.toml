@@ -1,0 +1,17 @@
+[project]
+name = "hw5-project"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "datasets>=4.8.4",
+    "evaluate>=0.4.6",
+    "pytorch-crf>=0.7.2",
+    "seqeval>=1.2.2",
+    "torch>=2.11.0",
+    "transformers>=5.5.4",
+]
+
+[tool.uv.sources]
+pytorch-crf = { git = "https://github.com/kmkurn/pytorch-crf" }

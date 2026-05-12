@@ -1,0 +1,171 @@
+Baseline (EN finetuned)
+
+Epoch	Training Loss	Validation Loss	Precision	Recall	F1	Accuracy
+1	0.065945	0.063684	0.913911	0.902221	0.908028	0.984191
+2	0.033030	0.050933	0.941818	0.945305	0.943558	0.990324
+3	0.022376	0.046397	0.942719	0.950017	0.946354	0.990986
+TrainOutput(global_step=5268, training_loss=0.058670351698983325, metrics={'train_runtime': 278.7076, 'train_samples_per_second': 151.137, 'train_steps_per_second': 18.902, 'total_flos': 1034617415983686.0, 'train_loss': 0.058670351698983325, 'epoch': 3.0})
+
+EN finetuned DE TEST RESULTS
+precision: 0.5589110043468314
+recall: 0.8007210750573582
+f1: 0.6583131231473995 cf XLM-R paper f1: 71.40
+
+EN finetuned EN TEST RESULTS
+precision: 0.9224738675958188
+recall: 0.9286215363030516
+f1: 0.925537493445202 cf XLM-R paper f1: 92.25
+
+-------------------
+DE finetuned (seed=1)
+
+Epoch	Training Loss	Validation Loss	Precision	Recall	F1	Accuracy
+1	0.058427	0.082734	0.866188	0.828288	0.846814	0.979862
+2	0.037217	0.066193	0.899207	0.894175	0.896684	0.985013
+3	0.018886	0.073703	0.917985	0.885525	0.901463	0.985985
+TrainOutput(global_step=4557, training_loss=0.045830696670795076, metrics={'train_runtime': 883.5826, 'train_samples_per_second': 41.259, 'train_steps_per_second': 5.157, 'total_flos': 1050177295618848.0, 'train_loss': 0.045830696670795076, 'epoch': 3.0})
+
+DE finetuned DE TEST RESULTS
+precision: 0.8780812791472352
+recall: 0.8639790232710587
+f1: 0.8709730712043614 
+
+cf XLM-R paper f1: 85.81
+
+-------------------
+EN+DE concatenated finetuned
+
+Epoch	Training Loss	Validation Loss	Precision	Recall	F1	Accuracy
+1	0.043668	0.070495	0.876919	0.871788	0.874346	0.982875
+2	0.024113	0.078258	0.912208	0.893411	0.902712	0.985557
+3	0.013618	0.087554	0.918389	0.893157	0.905597	0.986237
+
+EN+DE concatenated finetuned (seed=1)
+DE TEST RESULTS
+precision: 0.8762609280430397
+recall: 0.8541461815798099
+f1: 0.8650622406639005
+
+-------------------------------------------------------------------------------
+CRF on top of fine-tuned XLM-R -- DE TEST RESULTS (trained on seed=1)
+accuracy: 0.9849642877769863
+precision: 0.8855503038487509
+recall: 0.8597181252048509
+f1: 0.8724430400798271
+-----------------------
+
+
+CRF jointly trained with XLM-R base (top 1 layer unfrozen) -- DE TEST RESULTS (trained on seed=1)
+TRAINING
+epoch:               1
+training loss:            3.68
+validation loss:            1.75
+-----------------
+epoch:               2
+training loss:            1.12
+validation loss:            1.23
+-----------------
+epoch:               3
+training loss:            0.93
+validation loss:            1.07
+-----------------
+max change:  0.5585
+mean change: 0.0947
+
+CRF jointly trained with XLM-R base (top 1 layer unfrozen) -- DE TEST RESULTS
+accuracy: 0.9769362570509982
+precision: 0.8336805555555555
+recall: 0.78695509668961
+f1: 0.8096442421176867
+-------------------------------
+
+CRF jointly trained with XLM-R base (top 2 layers unfrozen) -- DE TEST RESULTS (trained on seed=1)
+epoch:               1
+training loss:            2.80
+validation loss:            1.31
+-----------------
+epoch:               2
+training loss:            0.91
+validation loss:            1.00
+-----------------
+epoch:               3
+training loss:            0.76
+validation loss:            0.96
+-----------------
+max change:  0.3716
+mean change: 0.0786
+
+CRF jointly trained with XLM-R base (top 2 layers unfrozen) -- DE TEST RESULTS
+accuracy: 0.9795352598040159
+precision: 0.8693790149892934
+recall: 0.7984267453294002
+f1: 0.8323936442849821
+------------------------
+CRF jointly trained with XLM-R base (top 3 layers unfrozen) -- DE TEST RESULTS (trained on seed=1)
+epoch:               1
+training loss:            2.21
+validation loss:            1.08
+-----------------
+epoch:               2
+training loss:            0.80
+validation loss:            0.89
+-----------------
+epoch:               3
+training loss:            0.63
+validation loss:            0.87
+-----------------
+max change:  0.4998
+mean change: 0.0746
+
+
+CRF jointly trained with XLM-R base (top 3 layers unfrozen) -- DE TEST RESULTS
+accuracy: 0.9792464817203473
+precision: 0.8527105352881009
+recall: 0.8197312356604392
+f1: 0.8358957219251336
+----------------------------------------
+Experiment: Does CRF head improve performance?
+(Baseline) XLM-R only top 1 layer finetuned on DE    vs.     (Experimental) CRF head jointly trained on DE with XLM-R with only top 1 layer unfrozen    
+Hyperparams:
+- Optimizer: AdamW
+- XLM-R top layer:
+    - LR: 2e-5
+    - weight decay: 0.01
+- CRF:
+    - LR: 1e-3
+
+
+(Baseline) XLM-R only top 1 layer finetuned on DE
+Epoch	Training Loss	Validation Loss	Precision	Recall	F1	Accuracy
+1	0.111037	0.127148	0.780885	0.731620	0.755450	0.960054
+2	0.087845	0.106371	0.816386	0.788349	0.802122	0.967304
+3	0.077251	0.100629	0.819124	0.784533	0.801455	0.969443
+TrainOutput(global_step=4557, training_loss=0.11939522370921694, metrics={'train_runtime': 300.501, 'train_samples_per_second': 121.317, 'train_steps_per_second': 15.165, 'total_flos': 1050177295618848.0, 'train_loss': 0.11939522370921694, 'epoch': 3.0})
+
+DE TEST RESULTS
+precision: 0.7657237936772047
+recall: 0.7541789577187807
+f1: 0.7599075297225891
+
+
+(Experimental) CRF head jointly trained on DE with XLM-R with only top 1 layer unfrozen
+epoch:               1
+training loss:            3.10
+validation loss:            1.73
+-----------------
+epoch:               2
+training loss:            1.16
+validation loss:            1.22
+-----------------
+epoch:               3
+training loss:            0.95
+validation loss:            1.16
+-----------------
+max change:  225.6455
+mean change: 78.1258
+
+CRF jointly trained with XLM-R base (top 1 layer unfrozen) -- DE TEST RESULTS
+accuracy: 0.9764357083726393
+precision: 0.8549337260677466
+recall: 0.7610619469026548
+f1: 0.8052713715970176

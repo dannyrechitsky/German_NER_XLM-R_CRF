@@ -1,0 +1,79 @@
+# --- Python & Environment ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.env
+.venv
+env/
+venv/
+ENV/
+*.egg-info/
+
+# --- NLP / Data Science Specific ---
+# Data files (corpora, raw datasets, processed data)
+/data/
+*.csv
+*.json
+*.jsonl
+*.tsv
+
+# --- Model Artifacts ---
+# Trained models, checkpoints, and embeddings
+models/
+checkpoints/
+*.pth
+*.pt
+*.pkl
+*.h5
+*.model
+*.bin
+*.weights
+
+# --- Vector Databases & Search Indices ---
+# FAISS, ChromaDB, Pinecone, Milvus, Qdrant
+faiss/
+chroma/
+vectorstore/
+*.index
+
+# --- Hugging Face / Transformers ---
+.cache/huggingface/
+huggingface/hub/
+
+# --- NLTK / Spacy Data ---
+nltk_data/
+spacy_data/
+
+# --- Jupyter Notebooks & IDEs ---
+.ipynb_checkpoints
+.vscode/
+.idea/
+
+# --- Logs & Outputs ---
+logs/
+*.log
+results/
+*.png
+*.jpeg
+*.svg
+
+# --- LaTeX build artifacts ---
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.out
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.dvi
+*.pdf
+
+# --- Misc ---
+.python-version
+Finetuning XLM-R PRESENTATION.pptx
+Rechitsky_Finetuning XLM-R PRESENTATION.pptx
+Literature
